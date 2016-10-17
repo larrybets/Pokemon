@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /**
  * Created by DAM on 5/10/16.
  */
@@ -36,7 +38,10 @@ public class PokemonPlanta extends Pokemon implements  Capturable{
         this.efectivoContra = efectivoContra;
     }
 
-
+    public static int valor_r(){
+        Random r = new Random();
+        return r.nextInt((120 - 20) + 1) + 20;
+    }
     @Override
     public String toString() {
 
@@ -57,6 +62,16 @@ public class PokemonPlanta extends Pokemon implements  Capturable{
 
     @Override
     public boolean capturar() {
+        int valor1 = valor_r();
+        if(valor1-getPuntosSalud()>getDefensa()){
+            System.out.println(getNombre()+ " dentro!");
+            return true;
+
+
+        }else{
+            System.out.println("se escapo!");
+            System.out.println("valor : " + valor1);
+        }
         return false;
     }
 }
